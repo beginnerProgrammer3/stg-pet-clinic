@@ -1,4 +1,4 @@
-package com.skorupa.sfgpetclinic;
+package com.skorupa.sfgpetclinic.model;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
