@@ -36,6 +36,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
+                    <localCheckout>true</localCheckout>
+                    <pushChanges>false</pushChanges>
                     <goals>install</goals>
                 </configuration>
             </plugin>
@@ -44,7 +46,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:noobProgrammer1/stg-pet-clinic.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
 </project>
