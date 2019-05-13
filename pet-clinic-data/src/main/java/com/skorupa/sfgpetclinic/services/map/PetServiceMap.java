@@ -1,11 +1,11 @@
 package com.skorupa.sfgpetclinic.services.map;
 
 import com.skorupa.sfgpetclinic.model.Pet;
-import com.skorupa.sfgpetclinic.services.CrudService;
+import com.skorupa.sfgpetclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet,Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();

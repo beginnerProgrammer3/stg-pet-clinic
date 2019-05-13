@@ -13,7 +13,7 @@
         <dependency>
             <artifactId>pet-clinic-data</artifactId>
             <groupId>com.skorupa</groupId>
-            <version>0.0.2</version>
+            <version>0.0.4-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,6 +38,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.skorupa</groupId>
+            <artifactId>pet-clinic-data</artifactId>
+            <version>0.0.4-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
 </project>
