@@ -2,6 +2,7 @@ package com.skorupa.sfgpetclinic.bootstrap;
 
 
 import com.skorupa.sfgpetclinic.model.Owner;
+import com.skorupa.sfgpetclinic.model.Pet;
 import com.skorupa.sfgpetclinic.model.PetType;
 import com.skorupa.sfgpetclinic.model.Vet;
 import com.skorupa.sfgpetclinic.services.OwnerService;
@@ -9,6 +10,8 @@ import com.skorupa.sfgpetclinic.services.PetTypeService;
 import com.skorupa.sfgpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -34,12 +37,22 @@ public class DataLoader implements CommandLineRunner {
             cat.setName("Cat");
             PetType saveCat = petTypeService.save(dog);
 
+        System.out.println("Loading Data!!!!");
+
             Owner owner1 = new Owner();
             owner1.setFirstName("Aneta");
             owner1.setLastName("Cabalska");
             owner1.setAddress(" przyjazni 55/57");
             owner1.setCity("Wroclaw");
             owner1.setTelephone("324-234-234");
+
+            Pet anetaPet = new Pet();
+            anetaPet.setPetType(saveDog);
+            anetaPet.setOwner(owner1);
+            anetaPet.setBirthDate(LocalDate.now());
+            anetaPet.setName("Bobik");
+            owner1.getPets().add(anetaPet);
+
             ovnerService.save(owner1);
 
 
@@ -49,6 +62,13 @@ public class DataLoader implements CommandLineRunner {
             owner2.setAddress("dęba 36");
             owner2.setCity("Poswietne");
             owner2.setTelephone("543-533-535");
+
+            Pet matPet = new Pet();
+            matPet.setName("Pimpkin");
+            matPet.setOwner(owner2);
+            matPet.setBirthDate(LocalDate.now());
+            matPet.setPetType(saveCat);
+            owner2.getPets().add(matPet);
             ovnerService.save(owner2);
 
             System.out.println("Loaded Owners....");
