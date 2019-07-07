@@ -8,6 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity{
+
     @Column(name = "name")
     private String name;
 

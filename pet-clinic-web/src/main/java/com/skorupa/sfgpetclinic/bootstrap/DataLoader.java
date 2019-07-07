@@ -2,10 +2,7 @@ package com.skorupa.sfgpetclinic.bootstrap;
 
 
 import com.skorupa.sfgpetclinic.model.*;
-import com.skorupa.sfgpetclinic.services.OwnerService;
-import com.skorupa.sfgpetclinic.services.PetTypeService;
-import com.skorupa.sfgpetclinic.services.SpecialitiesService;
-import com.skorupa.sfgpetclinic.services.VetService;
+import com.skorupa.sfgpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +16,14 @@ public class DataLoader implements CommandLineRunner {
     private final PetTypeService petTypeService;
     private final SpecialitiesService specialitiesService;
 
-    public DataLoader(OwnerService ovnerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService) {
+    private final VisitService visitService;
+
+    public DataLoader(OwnerService ovnerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService, VisitService visitService) {
         this.ovnerService = ovnerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialitiesService = specialitiesService;
+        this.visitService = visitService;
     }
 
 
@@ -64,7 +64,11 @@ public class DataLoader implements CommandLineRunner {
         owner1.getPets().add(anetaPet);
 
         ovnerService.save(owner1);
-
+        Visit visit1 = new Visit();
+        visit1.setPet(anetaPet);
+        visit1.setDate(LocalDate.now());
+        visit1.setDescription("Aneta wizyta1");
+        visitService.save(visit1);
         Specialities dentistry= new Specialities();
         dentistry.setDescription("Dentistry");
         Specialities saveDentistry = specialitiesService.save(dentistry);
@@ -91,6 +95,12 @@ public class DataLoader implements CommandLineRunner {
         matPet.setPetType(saveCat);
         owner2.getPets().add(matPet);
         ovnerService.save(owner2);
+
+        Visit visit2 = new Visit();
+        visit2.setPet(matPet);
+        visit2.setDate(LocalDate.now());
+        visit2.setDescription("Mat wizyta1");
+        visitService.save(visit2);
 
         System.out.println("Loaded Owners....");
 

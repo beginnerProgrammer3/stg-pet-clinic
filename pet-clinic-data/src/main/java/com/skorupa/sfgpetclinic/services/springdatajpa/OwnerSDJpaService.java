@@ -1,7 +1,7 @@
 package com.skorupa.sfgpetclinic.services.springdatajpa;
 
 import com.skorupa.sfgpetclinic.model.Owner;
-import com.skorupa.sfgpetclinic.repositories.OwnerReposiory;
+import com.skorupa.sfgpetclinic.repositories.OwnerRepository;
 import com.skorupa.sfgpetclinic.repositories.PetRepository;
 import com.skorupa.sfgpetclinic.repositories.PetTypeRepository;
 import com.skorupa.sfgpetclinic.services.OwnerService;
@@ -15,21 +15,17 @@ import java.util.Set;
 @Profile("springdatajpa")
 public class OwnerSDJpaService implements OwnerService {
 
-    private final OwnerReposiory ownerReposiory;
+    private final OwnerRepository ownerReposiory;
     private final PetRepository petRepository;
     private final PetTypeRepository petTypeRepository;
 
 
-    public OwnerSDJpaService(OwnerReposiory ownerReposiory, PetRepository petRepository, PetTypeRepository petTypeRepository) {
+    public OwnerSDJpaService(OwnerRepository ownerReposiory, PetRepository petRepository, PetTypeRepository petTypeRepository) {
         this.ownerReposiory = ownerReposiory;
         this.petRepository = petRepository;
         this.petTypeRepository = petTypeRepository;
     }
 
-    @Override
-    public Owner findByLastName(String lastName) {
-        return ownerReposiory.findByLastName(lastName);
-    }
 
     @Override
     public Set<Owner> findAll() {
