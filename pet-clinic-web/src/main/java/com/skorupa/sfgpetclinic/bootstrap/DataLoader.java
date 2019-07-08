@@ -11,21 +11,20 @@ import java.time.LocalDate;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final OwnerService ovnerService;
+    private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialitiesService specialitiesService;
 
     private final VisitService visitService;
 
-    public DataLoader(OwnerService ovnerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService, VisitService visitService) {
-        this.ovnerService = ovnerService;
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService, VisitService visitService) {
+        this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialitiesService = specialitiesService;
         this.visitService = visitService;
     }
-
 
     @Override
     public void run(String ...args) throws Exception {
@@ -33,7 +32,7 @@ public class DataLoader implements CommandLineRunner {
         int count = petTypeService.findAll().size();
 
         if(count == 0) {
-            loadData();
+           loadData();
         }
 
     }
@@ -63,7 +62,7 @@ public class DataLoader implements CommandLineRunner {
         anetaPet.setName("Bobik");
         owner1.getPets().add(anetaPet);
 
-        ovnerService.save(owner1);
+        ownerService.save(owner1);
         Visit visit1 = new Visit();
         visit1.setPet(anetaPet);
         visit1.setDate(LocalDate.now());
@@ -94,7 +93,7 @@ public class DataLoader implements CommandLineRunner {
         matPet.setBirthDate(LocalDate.now());
         matPet.setPetType(saveCat);
         owner2.getPets().add(matPet);
-        ovnerService.save(owner2);
+        ownerService.save(owner2);
 
         Visit visit2 = new Visit();
         visit2.setPet(matPet);

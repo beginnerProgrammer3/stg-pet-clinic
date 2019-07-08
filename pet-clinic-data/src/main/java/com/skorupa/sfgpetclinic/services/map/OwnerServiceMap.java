@@ -5,11 +5,13 @@ import com.skorupa.sfgpetclinic.model.Pet;
 import com.skorupa.sfgpetclinic.services.OwnerService;
 import com.skorupa.sfgpetclinic.services.PetService;
 import com.skorupa.sfgpetclinic.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile("asd")
 public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements OwnerService {
 
     private PetTypeService petTypeService;
@@ -66,4 +68,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements O
     }
 
 
+    @Override
+    public Owner findByLastName(String string) {
+        return null;
+    }
 }

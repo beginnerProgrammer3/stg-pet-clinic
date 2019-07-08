@@ -2,11 +2,13 @@ package com.skorupa.sfgpetclinic.services.map;
 
 import com.skorupa.sfgpetclinic.model.Specialities;
 import com.skorupa.sfgpetclinic.services.SpecialitiesService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile("asd")
 public class SpecialitiesMapService extends AbstractMapService<Specialities, Long> implements SpecialitiesService {
     @Override
     public Set<Specialities> findAll() {

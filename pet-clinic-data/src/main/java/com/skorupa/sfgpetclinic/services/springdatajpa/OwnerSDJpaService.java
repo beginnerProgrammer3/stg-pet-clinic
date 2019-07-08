@@ -43,13 +43,14 @@ public class OwnerSDJpaService implements OwnerService {
 //    }else{
 //        return null;
 //    }
-    //Ta sama metoda napisana o wiele krocej
+        //Ta sama metoda napisana o wiele krocej
         return ownerReposiory.findById(aLong).orElse(null);
 
     }
 
     @Override
     public Owner save(Owner object) {
+        System.out.println("## ## ## ###");
         return ownerReposiory.save(object);
 
     }
@@ -62,5 +63,10 @@ public class OwnerSDJpaService implements OwnerService {
     @Override
     public void deleteById(Long aLong) {
         ownerReposiory.deleteById(aLong);
+    }
+
+    @Override
+    public Owner findByLastName(String string) {
+        return ownerReposiory.findByLastName(string);
     }
 }
