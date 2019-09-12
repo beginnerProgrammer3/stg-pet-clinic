@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe</title>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+
+          rel="stylesheet" media="screen"/>
+    <script
+            src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js">
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"
+    ></script>
+
+
+</head>
+<body>
+
+
+    <table class="table-stripped" th:object="${owner}">
+        <tr>
+            <th>name</th>
+        <td><b th:text="*{firstName + ' ' + lastName} "></b></td>
+        </tr>
+        <tr>
+            <th>Adress</th>
+            <td><b th:text="*{address}"></b></td>
+        </tr>
+        <tr>
+            <th>
+                City
+            </th>
+            <td><b th:text="*{city}"></b></td>
+        </tr>
+        <tr>
+            <th>Telephone</th>
+            <td><b th:text="*{telephone}"></b></td>
+        </tr>
+    </table>
+    <a th:href = "@{{id}/pets/new(id=${owner.id})}" class="btn-default">
+        Add new Pet
+    </a>
+<br>
+    <table class="table-striped" th:each="pet : ${owner.pets}">
+        <td>
+            <dt>Name</dt>
+            <dd><!--/*@thymesVar id="name" type=""*/-->
+            <b th:text="${pet.name}"></b></dd>
+        </td>
+        <td>
+            <dt>ZXC</dt>
+            <dd><!--/*@thymesVar id="name" type=""*/-->
+                <b th:text="${pet.petType.name}"></b></dd>
+        </td>
+    </table>
+
+</body>
+</html>
